@@ -22,8 +22,8 @@ function(ModelView          , $      , Backbone , undef      , undef            
 			 * Build the modelview map object: extend the original map object
 			 */
 			this.map = _.extend({}, this.map, {
-				'.->css:top': this.dataMap.positionTop,
-				'.->css:left': this.dataMap.positionLeft,
+				'.->css:top': this.dataMap.top,
+				'.->css:left': this.dataMap.left,
 
 				'.->css:width': this.dataMap.width,
 				'.->css:height': this.dataMap.height,
@@ -33,12 +33,12 @@ function(ModelView          , $      , Backbone , undef      , undef            
 		},
 
 		_handleResize: function(e, ui) {
-			var map = this.map,
+			var map = this.dataMap,
 				set = {};
 
 			// positions
-			set[ map.positionTop ] = ui.position.top;
-			set[ map.positionLeft ] = ui.position.left;
+			set[ map.top ] = ui.position.top;
+			set[ map.left ] = ui.position.left;
 			set[ map.originalTop ] = ui.originalPosition.top;
 			set[ map.originalLeft ] = ui.originalPosition.left;
 
@@ -61,8 +61,6 @@ function(ModelView          , $      , Backbone , undef      , undef            
 
 		},
 
-		map: {},
-
 		dataMap: {
 			originalLeft: 'originalLeft',
 			originalTop: 'originalTop',
@@ -70,8 +68,8 @@ function(ModelView          , $      , Backbone , undef      , undef            
 			originalWidth: 'originalWidth',
 			originalHeight: 'originalHeight',
 
-			positionLeft: 'left',
-			positionTop: 'top',
+			left: 'left',
+			top: 'top',
 
 			width: 'width',
 			height: 'height',
