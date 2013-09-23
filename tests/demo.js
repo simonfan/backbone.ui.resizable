@@ -15,7 +15,7 @@ define(['backbone.ui.resizable','backbone','jquery','backbone.ui.draggable'], fu
 			axis: 'y',
 		},
 
-		map: {
+		map: _.extend({}, Resizable.prototype.map, {
 			'.position-top': 'top',
 			'.position-left': 'left',
 
@@ -23,12 +23,7 @@ define(['backbone.ui.resizable','backbone','jquery','backbone.ui.draggable'], fu
 			'.width': 'width',
 
 			'.->css:opacity': 'opacity',
-		},
-
-		positionDataMap: {
-			top: 'top',
-			left: 'left',
-		},
+		}),
 
 		model: new Backbone.Model({
 			top: 200,
